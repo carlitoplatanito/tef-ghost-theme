@@ -44,17 +44,15 @@ into the {body} tag of the default.hbs template --}}
             <section id="section-{{slug}}" class="site-main outer">
                 <h3>{{name}}</h3>
                 <div class="inner posts">
-
                     <div class="post-feed">
+                        {{#get "posts" include="authors,tags" limit="3" filter="tag:{{slug}}" order="published_at asc"}}
                         {{#foreach posts}}
-                            {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
                             {{> "post-card"}}
                         {{/foreach}}
+                        {{/get}}
                     </div>
-
                 </div>
             </section>
-
         {{/foreach}}
     {{/if}}
 

@@ -53,12 +53,11 @@ production stylesheet in assets/built/screen.css
      */
 
     /* Fonts */
-    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    --font-serif: Georgia, Times, serif;
+    --font-sans: 'Comic Neue', sans-serif;
+    --font-serif: 'Bangers', Georgia, Times, serif;
     --font-mono: Menlo, Courier, monospace;
 
 }
-
 
 /* 2. Layout - Page building blocks
 /* ---------------------------------------------------------- */
@@ -98,13 +97,12 @@ production stylesheet in assets/built/screen.css
 
 .site-header-cover {
     position: absolute;
-    top: 0;
+    top: -20%;
     right: 0;
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
 }
 
 .site-header-content {
@@ -122,6 +120,7 @@ production stylesheet in assets/built/screen.css
     min-height: 560px;
     background-color: var(--ghost-accent-color);
     color: #fff;
+    overflow: hidden;
 }
 
 .site-header-content.left-aligned {
@@ -141,6 +140,18 @@ production stylesheet in assets/built/screen.css
 
 .site-header-inner {
     position: relative;
+}
+
+.site-header-inner.inner {
+    width: auto;
+    max-width: 70%;
+    margin: 0 0 0 auto;
+    padding: 1rem 1rem;
+    background: var(--color-wash);
+    color: var(--color-darkgrey);
+    border-color: var(--color-darkgrey);
+    border-width: 0.3rem;
+    border-style: solid;
 }
 
 .site-header-content.left-aligned .site-header-inner {
@@ -165,6 +176,10 @@ production stylesheet in assets/built/screen.css
     padding: 0;
     font-size: 5rem;
     font-weight: 800;
+
+    -webkit-text-stroke-width: 0.15rem;
+    -webkit-text-stroke-color: var(--color-border);
+    text-shadow: 0.25rem 0.25rem var(--color-midgrey);
 }
 
 .has-serif-title .site-title {
@@ -176,7 +191,7 @@ production stylesheet in assets/built/screen.css
 }
 
 .site-header-content.left-aligned .site-title {
-    font-size: 4.4rem;
+    font-size: 5rem;
 }
 
 .has-cover .site-header-content.left-aligned .site-title {
@@ -194,23 +209,23 @@ production stylesheet in assets/built/screen.css
 
 :is(.site-logo, .site-title) + .site-description {
     max-width: 640px;
-    margin-top: 16px;
+    margin-top: 0.8rem;
     font-size: 2.4rem;
     font-weight: 400;
-    line-height: 1.4;
+    line-height: 1.1;
 }
 
 .site-logo + .site-description {
-    margin-top: 20px;
+    margin-top: 0.8rem;
 }
 
 .site-title + .site-description {
-    color: var(--color-secondary-text);
+    color: var(--color-darkgrey);
 }
 
 .has-cover .site-description {
     letter-spacing: -0.005em;
-    color: #fff;
+    color: var(--color-darkgrey);
 }
 
 .has-cover :is(.site-logo, .site-title) + .site-description {
@@ -252,9 +267,6 @@ production stylesheet in assets/built/screen.css
     .site-logo + .site-description {
         margin-top: 12px !important;
     }
-    .site-title + .site-description {
-        margin-top: 12px !important;
-    }
 }
 
 
@@ -263,7 +275,7 @@ production stylesheet in assets/built/screen.css
 
 .gh-head {
     height: 88px;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     line-height: 1.3em;
     background-color: #fff;
 }
@@ -431,7 +443,7 @@ production stylesheet in assets/built/screen.css
     display: flex;
     align-items: center;
     margin-top: 1px;
-    font-weight: 500;
+    font-weight: 900;
 }
 
 .gh-head-menu .nav {
@@ -869,13 +881,87 @@ production stylesheet in assets/built/screen.css
     flex-direction: column;
     background-size: cover;
     word-break: break-word;
+    background:#fff;
+    border-style: solid;
+    border-color: var(--color-darkgrey);
+    overflow: hidden;
 }
+
+.post-feed > .post-card:nth-child(even) {
+    border-width: 3px 4px 3px 5px;
+    border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
+    transform: rotate(0.5deg);
+}
+
+
+.post-feed > .post-card:nth-child(even) .post-card-content {
+    transform: rotate(-0.5deg);
+    padding: 1.5rem 3rem;
+}
+
+.post-feed > .post-card:nth-child(odd) {
+    border-width: 4px 4px 5px 4px;
+    border-radius:8% 15% 6% 85%/25% 4% 12% 5%;
+    transform: rotate(-0.5deg);
+}
+
+
+.post-feed > .post-card:nth-child(odd) .post-card-content {
+    transform: rotate(0.5deg);
+    padding: 1.5rem 3rem;
+}
+
+/* .post-card.tag-music {
+    display: block !important;
+    grid: none;
+    max-width: 60rem;
+}
+
+.post-card.tag-music .post-card-image-link {
+    aspect-ratio: 1/1;
+}
+
+.post-card.tag-music .post-card-content {
+    width: auto;
+    max-width: 65%;
+    position: absolute;
+    background-color: var(--color-wash);
+    border-color: var(--color-darkgrey);
+    border-width: 0.25rem;
+    border-style: solid;
+    padding: 1.5rem 3rem;
+    text-align: left;
+    bottom: 2rem;
+    right: 2rem;
+    left: auto;
+}
+
+.post-card.tag-music .post-card-image-link + .post-card-content {
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0s;
+}
+
+.post-card.tag-music .post-card-image-link:hover + .post-card-content,
+.post-card.tag-music .post-card-image-link:focus + .post-card-content {
+    opacity: 1;
+}
+
+.post-feed .post-card.tag-music:nth-child(odd) .post-card-content {
+    left: 2rem;
+    right: auto;
+}
+
+.post-card.tag-music .post-card-content .post-card-tags {
+    display: none;
+} */
 
 .post-card-image-link {
     position: relative;
     overflow: hidden;
     display: block;
-    margin-bottom: 32px;
+    margin-bottom: 1.5rem;
+    aspect-ratio: 1/1;
 }
 
 .post-card-image-link::after {
@@ -935,8 +1021,8 @@ production stylesheet in assets/built/screen.css
     text-decoration: none;
 }
 
-.post-feed .no-image .post-card-content-link {
-    padding: 0;
+.post-feed .no-image .post-card-content {
+    padding: 4rem 3rem;
 }
 
 .no-image .post-card-header {
@@ -976,10 +1062,6 @@ production stylesheet in assets/built/screen.css
     line-height: 1.2;
 }
 
-.post-card-content-link:hover .post-card-title {
-    opacity: 0.9;
-}
-
 .no-image .post-card-title {
     margin-top: 0;
 }
@@ -987,6 +1069,19 @@ production stylesheet in assets/built/screen.css
 .has-serif-title .post-card-title {
     font-family: var(--font-serif);
     letter-spacing: -0.005em;
+}
+
+.has-serif-title .post-card-large .post-card-title,
+.has-serif-title h1.article-title {
+    -webkit-text-stroke-width: 0.15rem;
+    -webkit-text-stroke-color: var(--color-border);
+    text-shadow: 0.25rem 0.25rem var(--color-midgrey);
+    transition-property: text-shadow;
+    transition-duration: 0.25s;
+}
+
+.has-serif-title .post-card-large .post-card-content-link:hover  .post-card-title {
+    text-shadow: 0.05rem 0.05rem var(--color-midgrey);
 }
 
 .post-card-title svg {
@@ -1003,13 +1098,14 @@ production stylesheet in assets/built/screen.css
 .post-card-excerpt {
     display: -webkit-box;
     overflow-y: hidden;
-    margin-top: 12px;
+    margin-top: 0.65rem;
     max-width: 720px;
     font-size: 1.6rem;
-    line-height: 1.5;
+    line-height: 1.2;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     word-break: break-word;
+    white-space: pre-line;
 }
 
 .has-sans-body .post-card-excerpt {
@@ -1027,8 +1123,8 @@ production stylesheet in assets/built/screen.css
 .post-card-meta {
     display: flex;
     align-items: center;
-    gap: 6px;
-    margin-top: 12px;
+    gap: 0.45rem;
+    margin-top: 0;
     padding: 0;
     font-size: 1.3rem;
     color: var(--color-secondary-text);
@@ -1038,6 +1134,10 @@ production stylesheet in assets/built/screen.css
     display: flex;
     align-items: center;
     gap: 6px;
+}
+                                                                                                                                                      
+.post-card-meta > .post-card-meta-length {
+    display: none;
 }
 
 .post-card-meta > * + *:not(script)::before {
@@ -1130,7 +1230,7 @@ make sure this only happens on large viewports / desktop-ish devices.
     }
 
     .post-card-large .post-card-excerpt {
-        margin-top: 16px;
+        margin-top: 0.8rem;
     }
 
     .post-card-full {
@@ -1535,6 +1635,11 @@ except for when immediately preceeded by a heading */
     margin: auto;
 }
 
+.kg-card.kg-callout-card {
+    border-width: 0.32rem;
+    border-style: solid;
+    border-color: var(--color-darkgrey);
+}
 .has-serif-title .kg-toggle-card .kg-toggle-heading-text {
     font-family: var(--font-serif);
 }
@@ -2469,17 +2574,22 @@ html.dark-mode .footer-cta-title {
     }
 }
 
-/*
+.site-content {
+    flex-grow: 1;
+    max-width: 1800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 2rem;
+    width: 100%;
+    border-left: 0.5rem solid #000000;
+    border-right: 0.5rem solid #000000;
+}
 
-Hey! You reached the end.
+.site-header-cover {
+    object-fit: cover;
+    top: 0;
+}
 
-Hope you enjoyed this CSS file, if you have any suggestions
-for improvements that might be useful for everyone who uses
-this theme, you can find the open source repository for it
-here: https://github.com/tryghost/casper
-
-Or, if you've just scrolled all the way to the bottom of the
-file to add some of your own styles. Well, you've come to
-the right place. Onward!
-
- */
+.site-footer {
+    margin-top: 0;
+}

@@ -1,0 +1,16 @@
+## routes.yaml
+
+routes:
+  /.well-known/nostr.json/:
+    template: nostr-json
+    content_type: text/json
+
+collections:
+  /:
+    permalink: /{primary_tag}/{slug}/
+    template: index
+    filter: tag:[news, updates]
+
+taxonomies:
+  tag: /{slug}/
+  author: /@{slug}/

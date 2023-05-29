@@ -1,0 +1,9 @@
+{
+{{#get "authors" filter="location:-null" }}
+    "names": {
+    {{#foreach authors}}
+        "{{slug}}": "{{location}}"{{#unless @last}},{{/unless}}
+    {{/foreach}}
+    }
+{{/get}}
+}
